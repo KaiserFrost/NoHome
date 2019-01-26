@@ -441,13 +441,36 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 660852814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3376, y: 0.4955, z: -10}
+  m_LocalPosition: {x: 0.3376, y: -3.29, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1090879331}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &822942130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1689545788542694, guid: b0ef71f8a8b92bf4ab5ab1f2105aa545,
+    type: 2}
+  m_PrefabInternal: {fileID: 2131473951}
+--- !u!95 &822942136
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 822942130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e61411ae751730a499380738f6e27801, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &894313935 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1351603209807020, guid: 5921d0f3b972c334ba990f05faef6db5,
@@ -1211,7 +1234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4808794607261618, guid: b0ef71f8a8b92bf4ab5ab1f2105aa545, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.4955
+      value: -3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4808794607261618, guid: b0ef71f8a8b92bf4ab5ab1f2105aa545, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1242,6 +1265,11 @@ Prefab:
       propertyPath: orthographic size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114746740713442036, guid: b0ef71f8a8b92bf4ab5ab1f2105aa545,
+        type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 822942136}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0ef71f8a8b92bf4ab5ab1f2105aa545, type: 2}
   m_IsPrefabAsset: 0
