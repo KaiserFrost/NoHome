@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 	bool crouch = false;
 	Vector2 movement;
 	Rigidbody2D rigidbody;
+	private bool m_FacingRight = true; 
 
 
 	private Manager food;
@@ -27,16 +28,27 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		horizontalMove += Input.GetAxisRaw("Horizontal") ;
-		verticalMove += Input.GetAxisRaw("Vertical") ;
+		horizontalMove = Input.GetAxisRaw("Horizontal") ;
+		verticalMove = Input.GetAxisRaw("Vertical") ;
 		//animator.SetFloat("Speed", Mathf.Abs(horizontalMove));//Sempre positivo, fazer animator
 
-			Vector2 move = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+			Vector2 move = new Vector2(horizontalMove,verticalMove);
 				movement = move.normalized * speed;
 
-			
+			animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 				
-				
+				if (horizontalMove > 0 && !m_FacingRight)
+			{
+				// ... flip the player.
+				Flip();
+			}
+			// Otherwise if the input is moving the player left and the player is facing right...
+			else if (horizontalMove < 0 && m_FacingRight)
+			{
+				// ... flip the player.
+				Flip();
+			}
+
 		if (Input.GetButtonDown("Jump"))
 		{
 
@@ -66,5 +78,16 @@ public class PlayerMovement : MonoBehaviour {
 			Destroy(colid.gameObject);
 			food.comida += 1;
 		}
+	}
+
+	private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingRight = !m_FacingRight;
+
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 	}
 }
