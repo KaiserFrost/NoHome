@@ -5,22 +5,38 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
 	public Animator animator; 
-	public CharacterController2D controller;
+	//public CharacterController2D controller;
 
-	public float speed = 40f;
+	public float speed = 1f;
 
 	float horizontalMove = 0f;
+	float verticalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
+	Vector2 movement;
+	Rigidbody2D rigidbody;
+
 
 	private Manager food;
 	
+
+	void Start() {
+	
+		rigidbody = GetComponent<Rigidbody2D>();
+	}
 	// Update is called once per frame
 	void Update () {
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
-		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));//Sempre positivo, fazer animator
+		horizontalMove += Input.GetAxisRaw("Horizontal") ;
+		verticalMove += Input.GetAxisRaw("Vertical") ;
+		//animator.SetFloat("Speed", Mathf.Abs(horizontalMove));//Sempre positivo, fazer animator
 
+			Vector2 move = new Vector2(Input.GetAxisRaw("Horizontal"),Input.GetAxisRaw("Vertical"));
+				movement = move.normalized * speed;
+
+			
+				
+				
 		if (Input.GetButtonDown("Jump"))
 		{
 
@@ -34,7 +50,9 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		//controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+	
+		rigidbody.MovePosition(rigidbody.position + movement * Time.fixedDeltaTime);
 		jump = false;
 	}
 

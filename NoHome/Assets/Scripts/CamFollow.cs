@@ -5,14 +5,18 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour {
 
 	// Use this for initialization
-	public Transform player;
+	public Rigidbody2D player;
+	public Vector2 position;
+     Rigidbody2D rigidbody;
 	void Start () {
 		
+		rigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		position =new Vector2 (player.position.x, transform.position.y);
 		
-		transform.position = new Vector3(player.position.x + 6, 0, -10);
+		transform.position = position;
 	}
 }
