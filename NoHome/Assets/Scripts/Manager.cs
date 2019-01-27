@@ -7,9 +7,10 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour {
 
-	public int comida;
+	public int comida,stolenFood;
 	//public TextMeshPro comidaText;
 	public Text comidaText;
+	public Text stolenText;
 
 	// Use this for initialization
 	void Start () {
@@ -19,5 +20,7 @@ public class Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		comidaText.text = ("Snacks: " + comida);
+		stolenText.text = ("Stolen: " + stolenFood);
+
 	}
 }

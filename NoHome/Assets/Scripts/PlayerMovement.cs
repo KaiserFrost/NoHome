@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	Vector2 movement;
 	Rigidbody2D rigidbody;
 	private bool m_FacingRight = true; 
-
+	public bool stole = false;
 
 	private Manager food;
 	
@@ -77,6 +77,12 @@ public class PlayerMovement : MonoBehaviour {
 
 			Destroy(colid.gameObject);
 			food.comida += 1;
+		}
+		if(colid.CompareTag("Steal"))
+		{
+			Destroy(colid.gameObject);
+			food.stolenFood +=1;
+			stole = true;
 		}
 	}
 
