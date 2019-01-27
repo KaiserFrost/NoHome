@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour {
 		if(Vector3.Distance(animator.transform.position, target.position) < 2 && follow == true){
 			
 			Debug.Log("LOSE");	
+			SaveValue.Comida = 0;
+			SaveValue.Stolen = 0;
 			SceneManager.LoadScene("GameOver");
 
 		}

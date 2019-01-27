@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour {
 	Rigidbody2D rigidbody;
 	private bool m_FacingRight = true; 
 	public bool stole = false;
-	public bool steal, pick;
-
+	public bool steal, pick,feed;
+	public Transform heartPos;
+	public GameObject image;
 	private Manager food;
 	
 
@@ -73,38 +74,63 @@ public class PlayerMovement : MonoBehaviour {
 		animator.SetBool("IsJumping", false);
 	}
 
+
+
+
 	void OnTriggerEnter2D(Collider2D colid)
 	{
+
+		if(colid.CompareTag("Dog"))
+		{
+			Debug.Log("Dog");
+			feed = true;
+		}
+
 		if(colid.CompareTag("Food") )
 		{
 			pick = true;
 
 		}
-			if(Input.GetButton("Pick"))
-			{
-				
-				Destroy(colid.gameObject);
-			food.comida += 1;
-			}
+		
+		
 
 		if(colid.CompareTag("Steal"))
 		{
 			steal = true;
-			
-			
 		}
 		
 	}
 
 private void OnTriggerStay2D(Collider2D colid) {
 	
+	if(colid.CompareTag("Dog"))
+	{
+		if(Input.GetButton("Pick"))
+		{
+			if(SaveValue.Comida > 0 || SaveValue.Stolen > 0)
+			{
+				if(SaveValue.Comida > SaveValue.Stolen)
+				{
+					SaveValue.Comida -=1;
+				}
+				else if(SaveValue.Comida <= SaveValue.Stolen)
+				{
+					SaveValue.Stolen -=1;
+				}
+
+				 GameObject heart = (GameObject)Instantiate(image,heartPos.position, Quaternion.identity);
+		                    Destroy(heart, 0.8f);
+			}
+		}
+	}
+
 	if(colid.CompareTag("Food") )
 		{
 			if(Input.GetButton("Pick"))
 			{
 				
 			Destroy(colid.gameObject);
-			food.comida += 1;
+			SaveValue.Comida += 1;
 			pick = false;
 			}
 		}
@@ -116,7 +142,7 @@ private void OnTriggerStay2D(Collider2D colid) {
 			if(Input.GetButton("Pick"))
 			{
 				Destroy(colid.gameObject);
-				food.stolenFood +=1;
+				SaveValue.Stolen +=1;
 				stole = true;
 				steal = false;
 			}
@@ -124,6 +150,13 @@ private void OnTriggerStay2D(Collider2D colid) {
 
 }
 	 private void OnTriggerExit2D(Collider2D other) {
+		
+		if(other.CompareTag("Dog"))
+		{
+			Debug.Log("Dog");
+			feed = false;
+		}
+		
 		if(other.CompareTag("Food") )
 		{
 			pick = false;
@@ -131,6 +164,11 @@ private void OnTriggerStay2D(Collider2D colid) {
 		if(other.CompareTag("Steal") )
 		{
 			steal = false;
+		}
+
+		if(other.CompareTag("Dog") )
+		{
+			feed = false;
 		}
 	}
 
@@ -150,6 +188,11 @@ private void OnTriggerStay2D(Collider2D colid) {
 		if(pick == true)
 		{
 			 GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 25), "Pick");
+		}
+
+		if(feed == true)
+		{
+				 GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 25), "feed");
 		}
 
 		if(steal == true)
