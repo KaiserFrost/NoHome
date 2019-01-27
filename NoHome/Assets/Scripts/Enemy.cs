@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
 		
 		if( follow == true)
 		FollowPlayer();
-		
+		transform.position = Vector2.MoveTowards(transform.position, target.position,speedEnemy * Time.deltaTime);
 
 		if(Vector2.Distance(transform.position, target.position) < 3)
 		{
