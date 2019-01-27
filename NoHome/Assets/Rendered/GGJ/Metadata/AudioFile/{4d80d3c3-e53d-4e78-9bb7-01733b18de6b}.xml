@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{4d80d3c3-e53d-4e78-9bb7-01733b18de6b}">
+        <property name="assetPath">
+            <value>Police_2.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>0.88888888888888884</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{ce1a677f-156a-433a-97a1-0fdbb23db377}</destination>
+        </relationship>
+    </object>
+</objects>

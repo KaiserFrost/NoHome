@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{d259090c-2756-4fd8-8c4e-e00bac63be75}">
+        <property name="assetPath">
+            <value>City_Ambience.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>62.94668934240363</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{ce1a677f-156a-433a-97a1-0fdbb23db377}</destination>
+        </relationship>
+    </object>
+</objects>

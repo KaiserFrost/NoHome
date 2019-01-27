@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{146c39cf-caf3-4ff3-ba29-e10753a00bb3}">
+        <property name="assetPath">
+            <value>Danger_Layer.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>59.076938775510207</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{ce1a677f-156a-433a-97a1-0fdbb23db377}</destination>
+        </relationship>
+    </object>
+</objects>
