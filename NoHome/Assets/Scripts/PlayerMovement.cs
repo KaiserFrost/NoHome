@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
 	Rigidbody2D rigidbody;
 	private bool m_FacingRight = true; 
 	public bool stole = false;
+	public bool steal, pick;
 
 	private Manager food;
 	
@@ -72,17 +73,64 @@ public class PlayerMovement : MonoBehaviour {
 		animator.SetBool("IsJumping", false);
 	}
 
-	void OnTriggerEnter2D(Collider2D colid){
-		if(colid.CompareTag("Food")){
+	void OnTriggerEnter2D(Collider2D colid)
+	{
+		if(colid.CompareTag("Food") )
+		{
+			pick = true;
 
-			Destroy(colid.gameObject);
-			food.comida += 1;
 		}
+			if(Input.GetButton("Pick"))
+			{
+				
+				Destroy(colid.gameObject);
+			food.comida += 1;
+			}
+
 		if(colid.CompareTag("Steal"))
 		{
+			steal = true;
+			
+			
+		}
+		
+	}
+
+private void OnTriggerStay2D(Collider2D colid) {
+	
+	if(colid.CompareTag("Food") )
+		{
+			if(Input.GetButton("Pick"))
+			{
+				
 			Destroy(colid.gameObject);
-			food.stolenFood +=1;
-			stole = true;
+			food.comida += 1;
+			pick = false;
+			}
+		}
+			
+	
+	if(colid.CompareTag("Steal"))
+		{
+		
+			if(Input.GetButton("Pick"))
+			{
+				Destroy(colid.gameObject);
+				food.stolenFood +=1;
+				stole = true;
+				steal = false;
+			}
+		}
+
+}
+	 private void OnTriggerExit2D(Collider2D other) {
+		if(other.CompareTag("Food") )
+		{
+			pick = false;
+		}
+		if(other.CompareTag("Steal") )
+		{
+			steal = false;
 		}
 	}
 
@@ -95,5 +143,18 @@ public class PlayerMovement : MonoBehaviour {
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	private void OnGUI() {
+		
+		if(pick == true)
+		{
+			 GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 25), "Pick");
+		}
+
+		if(steal == true)
+		{
+			 GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 25), "Steal");
+		}
 	}
 }

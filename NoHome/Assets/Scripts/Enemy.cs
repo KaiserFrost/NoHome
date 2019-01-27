@@ -11,11 +11,13 @@ public class Enemy : MonoBehaviour {
 	private bool follow = false;
 	private bool m_FacingRight = true; 
 	Vector3 oldPos, currentPos;
+	Event eve;
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 		animator = GetComponent<Animator>();
 		oldPos = animator.transform.position;
+		eve = GameObject.FindGameObjectWithTag("Player").GetComponent<Event>();
 	}
 	
 	// Update is called once per frame
@@ -44,12 +46,18 @@ public class Enemy : MonoBehaviour {
 			Debug.Log("Distance" + Vector3.Distance(oldPos,transform.position));
 		oldPos = currentPos;
 		
-		if(Vector3.Distance(animator.transform.position, target.position) < 2){
+		if(Vector3.Distance(animator.transform.position, target.position) < 2 && follow == true){
 			
 			Debug.Log("LOSE");	
 			SceneManager.LoadScene("GameOver");
 
 		}
+
+		if(follow ==true)
+		{
+				eve.intensity = 1;
+		}
+		else eve.intensity = 0;
 		Debug.Log(Vector3.Distance(animator.transform.position, target.position));
 
 	}
