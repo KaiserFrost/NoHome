@@ -21,7 +21,7 @@ public class PatrolBehavior : StateMachineBehaviour
         if (Vector2.Distance(animator.transform.position, patrol.patrolPoints[randomSpot].position) > 0.2f)
         {
             animator.transform.position = Vector2.MoveTowards(animator.transform.position, patrol.patrolPoints[randomSpot].position, speed * Time.deltaTime);
-
+            animator.transform.position = new Vector3(animator.transform.position.x,animator.transform.position.y,-1);
         }
         else
         {
@@ -33,6 +33,8 @@ public class PatrolBehavior : StateMachineBehaviour
         }
 
     }
+
+
 
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
