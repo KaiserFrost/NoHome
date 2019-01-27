@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour {
 	void Update () {
 		
 		
+
 		currentPos = animator.transform.position;
 
 		if( follow == true)
@@ -42,6 +44,13 @@ public class Enemy : MonoBehaviour {
 			Debug.Log("Distance" + Vector3.Distance(oldPos,transform.position));
 		oldPos = currentPos;
 		
+		if(Vector3.Distance(animator.transform.position, target.position) < 2){
+			
+			Debug.Log("LOSE");	
+			SceneManager.LoadScene("GameOver");
+
+		}
+		Debug.Log(Vector3.Distance(animator.transform.position, target.position));
 
 	}
 

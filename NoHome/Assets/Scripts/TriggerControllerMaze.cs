@@ -7,25 +7,24 @@ public class TriggerControllerMaze : MonoBehaviour {
 
 	 public GameObject guiObj;
      public string lvlToLoad;
-     public GameObject entradaMaze;
-
+     
 	// Use this for initialization
 	void Start () {
         guiObj.SetActive(false);
-        entradaMaze.SetActive(false);
+       
 	}
 
    
-    void OnTriggerStay(Collider other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             guiObj.SetActive(true);
-            entradaMaze.SetActive(true);
+            
             //if ( Input.GetKeyDown(KeyCode.Space))
             //{
                 SceneManager.LoadScene(lvlToLoad);
-                
+                Debug.Log("MUDA CENA");
             //}
 
         }
@@ -33,7 +32,7 @@ public class TriggerControllerMaze : MonoBehaviour {
         
     }
 
-    void OnTriggerExit()
+    void OnTriggerExit2D()
     {
         guiObj.SetActive(false);
     }

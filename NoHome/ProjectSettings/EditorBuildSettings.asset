@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CenaJogo.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/CenaJogo2.unity
+    guid: 36105e4a31b72864aaf56dfcdabad876
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: b050fe2dc00c2204ba1b9958a875a6d9
   m_configObjects: {}
